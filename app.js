@@ -16,6 +16,7 @@ $(function(){
 	
 
 	var S = new P(250, 250);
+	var radius = 200;
 
 	var points = 10;
 	var pointsElement = $("#points");
@@ -36,6 +37,31 @@ $(function(){
 	
 	
 	function doThis(){
+		var svg = $("svg");
+		svg.children().each(function(index, element){
+			$(element).remove();
+		});
+		
 		console.log(points, times);
+		
+		var alpha = Math.PI * 2 / points ;
+		var circlePoints = [];
+
+		for(var i = 0; i < points; i++){
+			circlePoints.push(new P(
+				parseInt(S.x + radius * Math.cos(i * alpha)),
+				parseInt(S.y + radius * Math.sin(i * alpha))
+			));
+		}
+		
+		for(var i = 0; i < points; i++){
+			pLine(
+				circlePoints[i],
+				circlePoints[(i * times) % points]
+			);
+		}
 	};
+	
+	doThis();
+	
 });
