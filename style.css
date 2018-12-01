@@ -1,0 +1,14 @@
+body{
+	text-align: center;
+}
+
+svg{
+	width: 500px;
+	height: 500px;
+}
+
+line{
+	stroke: black;
+	stroke-width: 1px;
+}
+
